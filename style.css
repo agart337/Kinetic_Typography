@@ -1,13 +1,13 @@
 /* garamond font styling */
 .cormorant-garamond-light {
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Helvetica", serif;
     font-weight: 300;
     font-style: normal;
 }
 
 .cormorant-garamond-regular {
     font-family: "Cormorant Garamond", serif;
-    font-weight: 400;
+    font-weight: 600;
     font-style: normal;
 }
 
