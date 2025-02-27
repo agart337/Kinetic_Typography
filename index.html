@@ -1,59 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.css" rel="stylesheet">
-    <title>Homepage</title>
-    <link href="https://fonts.cdnfonts.com/css/quentin-blake" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-        rel="stylesheet">
+    <title>1 INPUT 1 OUTPUT TEMPLATE</title>
 </head>
 
 <body>
-    <div class="header">
-        <div class="top-nav">
-            <a href="/Kid Homepage/index.html" class="left-link">The Creative Act</a>
-            <a href="/Adult Homepage/index.html" class="right-link">Child Mode</a>
-        </div>
-    </div>
 
-    <!-- New wrapper for layout -->
-    <div class="content-container">
-        <div class="textbox">
-            <div id="bg"></div>
-            <div class="gradient" id="cursor"></div>
-            <div class="heading">About</div>
-            <br>
-            <br>
-            <p>The Creative Act: A Way of Being by Rick Rubin is a book about creativity—not just for artists but for
-                everyone.
-                <br>
-                Rubin discusses the phases of a creative project, which he calls the Seed phase, the Experiment
-                phase, the Craft phase, and the Completion phase.
-                <br>
-                <br>
-                This website categories some of my favourite chapters into what I think are part of each phase.
-            </p>
-        </div>
 
-        <div class="menu">
-            <div class="seed-phase">
-                <a href="/Kid Homepage/Seed phase/index.html" class="heading">The Seed Phase</a>
-                <br>
-                <img class="next" src="/assets/arrow2.svg" alt="next arrow" />
-        </div>
+    <!-- INPUT FIELD FOR 1 CHARACTER -->
+    <input type="text" id="charInput" maxlength="1">
 
-            <div class="quote">
-                <a href="/quote/index.html" class="heading">A Way Of Being</a>
-                <br>
-                <img src="/assets/arrow2.svg" alt="previous arrow" />
-            </div>
-        </div>
-    </div>
-    <script src="script.js" async defer></script>
+    <!-- BUTTON TO DISPLAY IMAGE -->
+    <button onclick="displayImage()" id="submitButton">Show Image</button>
+
+    <!-- IMAGE TO DISPLAY -->
+    <img id="displayedImage" src="">
+
+
+    <!-- Image Display Script Below -->
+    <script>
+        // Array of images
+        // DIRECTIONS: UPDATE THE URLS WITH THE RELATIVE LINKS OF YOUR IMAGES
+        const images = [
+            "https://i.pinimg.com/originals/fa/f6/1e/faf61e061e6180d1b1aa09df1e3c547a.gif", //Asap rocky
+            "https://i0.wp.com/grungecake.com/wp-content/uploads/2019/07/baby-keem-honest-grungecake-thumbnail.gif?fit=364%2C205&ssl=1", //Baby keem
+            "https://66.media.tumblr.com/ddad45b24c034d97ad403af146aa1481/tumblr_nl0m31LFUb1qf5do9o1_500.gif", //Childish gambio
+            "https://media0.giphy.com/media/0juDvR9wK0MNfYBaPj/giphy.gif?cid=6c09b952ujmota5qdqm0i231476nklfd1dqaudl0o4masefb&ep=v1_gifs_search&rid=giphy.gif&ct=g", //Daniel ceasar
+            "https://68.media.tumblr.com/e817df03fbbe0f497f826cb752c37640/tumblr_msbfr9EhBt1rybkoto9_500.gif", //Earl sweatshirt
+            "https://media4.giphy.com/media/g01GYfDgWaV8RqgX6J/giphy.gif?cid=6c09b952vomli6j4imktmz542ooei2vvklyx9lnq4348r9ci&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g", //Fred again
+            "https://media4.giphy.com/media/3ohs7PrePDURxvHm80/giphy.gif?cid=6c09b9528jmhmktxsdngj8mx9ftn0qokonm28menhekbbuvl&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g", //Green day
+            "https://hips.hearstapps.com/digitalspyuk.cdnds.net/16/37/1473689578-hans-zimmer-dance.gif?crop=0.7502222222222221xw:1xh;center,top&resize=1200:*", //Hans zimmer
+            "https://64.media.tumblr.com/faba5a40a2aec254f176f23d4edf3a80/tumblr_oj2b4tJd5w1tcxpeio1_500.gifv", //Imogene heap
+            "https://media0.giphy.com/media/lSGuRN6hCeJynQ5cjb/giphy.gif?cid=6c09b95290vw6wkbn3yp8mez5otvebnulzly4n1krsy1osrb&ep=v1_gifs_search&rid=giphy.gif&ct=g", //Jorja smith
+            "https://media2.giphy.com/media/XjSXn0UX75kNOy5pjE/giphy.gif?cid=6c09b9521fu3osprjckt7essmezketjg3gnleasn6i9h2sw9&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g", //Kendrick lamar
+            "https://media0.giphy.com/media/fU4Qcs2VAKmQlylJqK/giphy.gif?cid=6c09b9521hw3ug6tlmrxdy2udh5z2jachziyvh9l2jfoukpe&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g", //Lana del rey
+            "https://media4.giphy.com/media/54oUR7bTH0FhK/giphy.gif?cid=6c09b9525b5h4stjkmgp22j7amka143k3cdg6ch2q8r5t9rn&ep=v1_gifs_search&rid=giphy.gif&ct=g", //Mac miller
+            "https://media4.giphy.com/media/ycfN5HD3rkDnVZCvbU/200.gif", //Nelly
+            "https://64.media.tumblr.com/0d0d2354888f708551206be5ce31c3ab/94aed85d3d3318c9-61/s540x810/2701e0595d2d3938cfee86fd8bf0957b8f7f794f.gifv", //Omar apollo
+            "https://i.pinimg.com/originals/67/31/d8/6731d8c2c9d928c057a060394ddbabe6.gif", //Pinkpanthress
+            "https://media.giphy.com/media/l4pTfL5UOrwMlKXUA/giphy.gif", //Quincy jones
+            "https://c.tenor.com/tBxWqMculMYAAAAC/rosalia-bizcochito.gif", //Rosalia
+            "https://miro.medium.com/v2/resize:fit:1400/1*-gmWdCQI5ZDSbaF5bPNXdw.gif", //070 Shake
+            "https://media2.giphy.com/media/UH0TIyLilUsGVgU118/giphy.gif?cid=6c09b952ahf28crw834o7hbwnss4ydnmx7mrp71w1osx3n01&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g", //Tyler the creator
+            "https://i.pinimg.com/originals/27/00/34/27003451f29b75bb0818fcd204d01ce3.gif", //U2
+            "https://media3.giphy.com/media/fXKYDSinuSjhCtDrjF/giphy.gif?cid=6c09b952ukekevbb8n2d348pdryhcln54hv01f0hvsr7yobq&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g", //Vince staples
+            "https://media.tenor.com/c2qNZS6cZFEAAAAM/will-i-am-clapping.gif", //Will.i.am
+            "https://media4.giphy.com/media/G6Jayu5b9pGzqGU0gi/giphy.gif?cid=6c09b952d255us3losk7ilf6tcact2fsc7e2w9x7ayh3sy5d&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g", //charli XCX
+            "https://media0.giphy.com/media/26ufkjTmeJmJB8mhq/giphy.gif?cid=6c09b952mpsx6snvbm1jo7i4p31ffo78i23ox82z2bs6200o&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g", //Ye
+            "https://media3.giphy.com/media/KZ8GSsn4CN4sg/giphy.gif?cid=6c09b95234iv2mrmoib6lwp9g54q90bcyzanfz9f04nqa5pq&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g"//Zayn
+        ];
+
+        function displayImage() {
+            const input = document.getElementById("charInput").value.toUpperCase();
+            const imgElement = document.getElementById("displayedImage");
+
+            // Assign an image based on character (A-Z)
+            const index = input.charCodeAt(0) - 65; // 'A' is 65 in ASCII
+            if (index >= 0 && index < images.length) {
+                imgElement.src = images[index];
+                imgElement.style.display = "block";
+            } else {
+                /* 
+                alert("Please enter a letter between A and Z.");
+                imgElement.style.display = "none";
+                */
+
+                // IF INVALID INPUT IS ENTERED, DISPLAY ALTERNATE IMAGE
+                imgElement.src = "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmtkdnJhMXY4Njd1cXR3MTM3MW1nMzZ1NXNhNHlhOHA0MWF2dDUzdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/13dRJkj5wgKq9q/giphy.gif"
+                imgElement.style.display = "block";
+            }
+        }
+    </script>
+
 </body>
+
+</html>
